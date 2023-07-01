@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/about/styles.css' %}">
+
+<div class="container top-container marketing">
+  <!-- START THE FEATURETTES -->
+  {% for ab_i in ab_cont %}
+     <div class="row featurette" id="about{{forloop.counter}}">
+       {% if forloop.counter0|divisibleby:2 %}
+          <div class="col-md-7">
+       {% else %}
+          <div class="col-md-7 order-md-2">
+       {%endif%}
+         <h2 class="featurette-heading">{{ab_i.title_text}}<br><span class="text-muted">{{ab_i.subtitle_text}}</span></h2>
+         <p>{{ab_i.main_text}}</p>
+       </div>
+       {% if forloop.counter0|divisibleby:2 %}
+          <div class="col-md-5">
+       {% else %}
+          <div class="col-md-5 order-md-1">
+       {%endif%}
+         {%if ab_i.image %}
+         <img class="featurette-image img-fluid mx-auto" src="{{ab_i.image.url}}" alt="Generic placeholder image">
+         {%endif%}
+       </div>
+     </div>
+     {% if not forloop.last %}
+     <hr class="featurette-divider">
+     {% endif %}
+  {% endfor %}
+  <!-- /END THE FEATURETTES -->
+</div><!-- /.container -->
+{% endblock %}

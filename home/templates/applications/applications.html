@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/applications/styles.css' %}">
+<div class="container top-container marketing">
+  <!-- START THE FEATURETTES -->
+  {% for appl_i in appl_cont %}
+     <div class="row featurette" id="Appl{{forloop.counter}}">
+       {% if forloop.counter0|divisibleby:2 %}
+          <div class="col-md-7">
+       {% else %}
+          <div class="col-md-7 order-md-2">
+       {%endif%}
+         <h2 class="featurette-heading">{{appl_i.title_text}}<br><span class="text-muted">{{appl_i.subtitle_text}}</span></h2>
+         <p>{{appl_i.main_text}}</p>
+           {%if appl_i.load_file %}
+             <p><a class="btn btn-lg btn-primary" href="{{appl_i.load_file.url}}" download role="button">{{appl_i.button_text}}</a></p>
+           {% endif %}
+       </div>
+       {% if forloop.counter0|divisibleby:2 %}
+          <div class="col-md-5">
+       {% else %}
+          <div class="col-md-5 order-md-1">
+       {%endif%}
+         {%if appl_i.image %}
+         <img class="featurette-image img-fluid mx-auto" src="{{appl_i.image.url}}" alt="Generic placeholder image">
+         {%endif%}
+       </div>
+     </div>
+     {% if not forloop.last %}
+     <hr class="featurette-divider">
+     {% endif %}
+  {% endfor %}
+  
+  <!-- /END THE FEATURETTES -->
+</div>
+{% endblock %}

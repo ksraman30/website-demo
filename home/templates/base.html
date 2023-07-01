@@ -1,0 +1,143 @@
+<!doctype html> 
+{% load static %}
+<html lang="en">
+  <!-- Website created by Benjamin Pinto -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Benjamin Pinto">
+   
+    <link rel="icon" href="{% static 'home/images/logo.png' %}">
+
+    <title>{{app_text}} | White Horse Renewable Power</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'base/styles.css' %}"> -->
+    <!-- Custom styles for this template -->
+  </head>
+
+  <style>
+  html
+  {
+    scroll-padding-top:200px;
+  }
+  .majority
+  {
+    min-height: 100vh;
+  }
+
+  .top-container
+  {
+    padding-top:150px;
+  }
+  .carousel
+  {
+    padding-top:100px;
+  }
+
+  .nav-link
+  {
+  font-size: 20px;
+  color: black;
+  }
+  .navbar
+  {
+  background-image: url("{% static 'home/images/fullbanner.png'%}");
+  background-repeat: repeat-x;
+  }
+  @media (min-width:768px){
+    .small-only{
+      display:none;
+    }
+  }
+
+  @media (max-width:767px){
+    .navbar-logo {
+      width:5rem;
+      height:5rem;
+    }
+    .small-hidden{
+      display:none;
+    }
+
+    .header-col{
+      width:30px
+    }
+    .header-text{
+      font-size: 0.9rem
+    }
+  }
+  </style>
+
+  <body>
+    <div class="majority">
+       <header>
+         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+           <a href="/"><img class="navbar-logo small-hidden" src="{% static 'home/images/logo.png'%}" alt="Ausimin Logo" width=140 height=140></a>
+           <div class="col">
+             <div class="row" style="height:6rem;">
+                 <a href="/"><img class="navbar-logo small-only" src="{% static 'home/images/logo.png'%}" alt="Ausimin Logo"></a>
+               <div class="col" width=auto>
+                 <p class="header-text text-left">
+                   <b>White Horse Renewable Power</b>
+                   <br>
+                   Exports and imports the Products and Services
+                 </p>
+               </div>
+             </div>
+             <div class="row">
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarCollapse">
+                 <ul class="navbar-nav mr-auto">
+                   <li class="nav-item {%if app_name == "About"%}active{% endif %}">
+                     <a class="nav-link" href="/about">Company</a>
+                   </li>
+                   <li class="nav-item {%if app_name == "Applications"%}active{% endif %}">
+                     <a class="nav-link" href="/applications">Applications</a>
+                   </li>
+                   <li class="nav-item {%if app_name == "Products"%}active{% endif %}">
+                     <a class="nav-link" href="/products">Products</a>
+                   </li>
+                   <li class="nav-item {%if app_name == "Certify"%}active{% endif %}">
+                     <a class="nav-link" href="/certifications">Certifications</a>
+                   </li>
+                   <li class="nav-item {%if app_name == "Contact"%}active{% endif %}">
+                     <a class="nav-link" href="/contact">Contact Us</a>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+         </nav>
+       </header>
+       <main role="main">
+         <div id="content">
+           {% block content %}
+           {% endblock %}
+         </div>
+       </main>
+    </div>
+    <div class="container">
+     <hr>
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p class="float-left">&copy; 2021 Ausimin Pty Ltd &middot; ABN: 48 146 942 529</p>
+      </footer>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster --> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  </body>
+</html>
+

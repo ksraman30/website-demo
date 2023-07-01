@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/products/styles.css' %}">
+<div class="container top-container marketing">
+  <!-- START THE FEATURETTES -->
+  {% for prod_i in prod_cont %}
+     <div class="row featurette" id="Prod{{forloop.counter}}">
+       {% if forloop.counter0|divisibleby:2 %}
+         <div class="col-md-7">
+       {% else %}
+         <div class="col-md-7 order-md-2">
+       {% endif %}
+         <h2 class="featurette-heading">{{prod_i.title_text}}</h2>
+         {% if prod_i.aka_text %}
+         <p><b>Other Names: </b>{{prod_i.aka_text}}</p>
+         {% endif %}
+         {% if prod_i.purity_text %}
+         <p><b>Purity: </b>{{prod_i.purity_text}}</p>
+         {% endif %}
+         {% if prod_i.standards_text %}
+         <p><b>Standards: </b>{{prod_i.standards_text}}</p>
+         {% endif %}
+         {% if prod_i.sizes_text %}
+         <p><b>Pack Sizes: </b>{{prod_i.sizes_text}}</p>
+         {% endif %}
+         {% if prod_i.specs_text %}
+         <p><b>Product Specifications: </b>{{prod_i.specs_text}}</p>
+         {% endif %}
+         <p><b>Uses: </b></p>
+         <ul>
+         {% for use_a in use_cont %}
+            {% if forloop.counter == forloop.parentloop.counter %}
+               {% for use_i in use_a%}
+                  <li>{{use_i.use_text}}</li>
+               {% endfor %}
+            {% endif %}
+         {% endfor %}
+         </ul>
+            <p>
+            {% for butt_a in butt_cont %}
+                  {% if forloop.counter == forloop.parentloop.counter %}
+                  {% for butt_i in butt_a%}
+                    <a class="btn btn-lg btn-primary" href="{{butt_i.load_file.url}}" download role="button">{{butt_i.button_text}}</a>
+                  {% endfor %}
+               {% endif %}
+            {% endfor %}
+            </p>
+       </div>
+       {% if forloop.counter0|divisibleby:2 %}
+         <div class="col-md-5">
+       {% else %}
+         <div class="col-md-5 order-md-1">
+       {% endif %}
+         {%if prod_i.image%}
+         <img class="featurette-image img-fluid mx-auto" src="{{prod_i.image.url}}" alt="Generic placeholder image">
+         {%endif%}
+       </div>
+     </div>
+     <hr class="featurette-divider">
+  {% endfor %}
+
+  <!-- /END THE FEATURETTES -->
+</div>
+
+<!-- Certifications -->
+<div class="container marketing">
+  <div class="row-md-7 text-center">
+    <h2 class="featurette-heading">{{cert_cont.0.title_text}}</h2>
+    <p>{{cert_cont.0.main_text}}</p>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 text-center">
+      <img class="cert-image" src="{% static 'home/images/KosherAus.png'%}" alt="Generic placeholder image" width="140" height="140">
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center">
+      <img class="cert-image" src="{% static 'home/images/Halal.jpg'%}" alt="Generic placeholder image" width="217" height="140">
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center">
+      <img class="cert-image" src="{% static 'home/images/GMP.gif'%}" alt="Generic placeholder image" width="140" height="140">
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+</div><!-- /.container -->
+{% endblock %}
